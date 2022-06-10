@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
  */
 public class createticket extends javax.swing.JFrame {
 
-    private int count = 1;
-
     /**
      * Creates new form createuser
      */
@@ -203,7 +201,7 @@ public class createticket extends javax.swing.JFrame {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
         Date date = new Date(); 
         newticket ticket = new newticket();
-        ticket.setId(count++);
+        ticket.setId(masterclass.id);
         ticket.setTitle(jnewTitle.getText());
         ticket.setDescrip(jnewDescript.getText());
         ticket.setStartdate(formatter.format(date));
@@ -211,6 +209,7 @@ public class createticket extends javax.swing.JFrame {
         ticket.setUserasigned("");
         ticket.setStatus("Not assigned");
         ticket.setFinishdate("");
+        masterclass.id++;
         
         //add ticket
         masterclass.ticket.add(ticket);

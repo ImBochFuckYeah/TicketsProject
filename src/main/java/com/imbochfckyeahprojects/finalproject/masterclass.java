@@ -14,6 +14,7 @@ public class masterclass {
 public static ArrayList<newusers> users;
 public static ArrayList<newteam> team;
 public static ArrayList<newticket> ticket;
+public static int id = 1;
 
     public static void main(String[] args) {
         users = new ArrayList<>();
