@@ -286,6 +286,8 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
         // TODO add your handling code here:
         String filter = "";
         String filterUser = menuusers.usercoockie;
+        String filterRol = menuusers.rolcoockie;
+        String filterTeam = menuusers.teamcookie;
         ArrayList<newticket> ticketu = new ArrayList<>();
 
         switch (jstatus.getSelectedIndex()){
@@ -305,21 +307,44 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
                 filter = "Resolved";
             break;
         }
-
-        if(filter.equals("all")){
-            for (newticket u: masterclass.ticket) {
-                if (filterUser.equals(u.getUsercreated())){
-                    ticketu.add(u);
+        
+        if(filterRol.equals("Normal user")){ //Si es usuario normal
+            
+            if(filter.equals("all")){
+                for (newticket u: masterclass.ticket) {
+                    if (filterUser.equals(u.getUsercreated())){
+                        ticketu.add(u);
+                    }
+                }
+            }else{
+                for (newticket u: masterclass.ticket) {
+                    if (filter.equals(u.getStatus())&&filterUser.equals(u.getUsercreated())){
+                        ticketu.add(u);
+                    }
                 }
             }
-            //ticketu = masterclass.ticket;
-        }else{
-            for (newticket u: masterclass.ticket) {
-                if (filter.equals(u.getStatus())&&filterUser.equals(u.getUsercreated())){
-                    ticketu.add(u);
+            
+        }else if(filterRol.equals("Team lead user")){ //Si es lider de equipo
+            
+            if(filter.equals("all")){
+                for (newticket u: masterclass.ticket) {
+                    if (filterTeam.equals(u.getTeamasigned())){
+                        ticketu.add(u);
+                    }
+                }
+            }else{
+                for (newticket u: masterclass.ticket) {
+                    if (filter.equals(u.getStatus())&&filterTeam.equals(u.getTeamasigned())){
+                        ticketu.add(u);
+                    }
                 }
             }
+            
+        }else if(filterRol.equals("Team member user")){ //Si es usuario miembro
+        }else{ //Si no encuentra el rol
+            JOptionPane.showMessageDialog(this, "Nonexistent role");
         }
+        
         setdatatable(ticketu, filter);
     }//GEN-LAST:event_jstatusItemStateChanged
 
@@ -352,7 +377,9 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
                 break;
             case "Normal user":
                 setcombo();
-                setdatatable(masterclass.ticket, "all");
+                break;
+            case "Team lead user":
+                setcombo();
                 break;
         }
     }

@@ -19,6 +19,7 @@ public class newticket {
     private String usercreated;
     private String userasigned;
     private String finishdate;
+    private String teamasigned;
 
     /**
      * @return the id
@@ -130,5 +131,19 @@ public class newticket {
      */
     public void setFinishdate(String finishdate) {
         this.finishdate = finishdate;
+    }
+
+    /**
+     * @return the teamasigned
+     */
+    public String getTeamasigned() {
+        return teamasigned;
+    }
+
+    /**
+     * @param teamasigned the teamasigned to set
+     */
+    public void setTeamasigned(String teamasigned) {
+        this.teamasigned = teamasigned;
     }
 }

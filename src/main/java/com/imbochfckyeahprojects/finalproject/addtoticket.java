@@ -13,15 +13,15 @@ import java.util.ArrayList;
  *
  * @author imbochfuckyeah
  */
-public class addtoteam extends javax.swing.JFrame {
+public class addtoticket extends javax.swing.JFrame {
 
 
-    ArrayList<newusers> usersTeamG = new ArrayList<>();
+    ArrayList<newticket> ticketsAsigneds = new ArrayList<>();
 
     /**
      * Creates new form addtoteam
      */
-    public addtoteam() {
+    public addtoticket() {
         initComponents();
         this.setLocationRelativeTo(null);
         setComboTeam();
@@ -41,9 +41,9 @@ public class addtoteam extends javax.swing.JFrame {
         jtitle = new javax.swing.JLabel();
         jsubtitle = new javax.swing.JLabel();
         btcreate = new javax.swing.JButton();
-        jusername = new javax.swing.JComboBox<>();
+        jticket = new javax.swing.JComboBox<>();
         jbackmenu = new javax.swing.JLabel();
-        jteamname = new javax.swing.JComboBox<>();
+        jmemberuser = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         datateamusers = new javax.swing.JTable();
 
@@ -55,7 +55,7 @@ public class addtoteam extends javax.swing.JFrame {
 
         jtitle.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jtitle.setForeground(new java.awt.Color(102, 102, 102));
-        jtitle.setText("Add user to team");
+        jtitle.setText("Add ticket to user");
 
         jsubtitle.setFont(new java.awt.Font("Comfortaa", 0, 14)); // NOI18N
         jsubtitle.setForeground(new java.awt.Color(0, 153, 204));
@@ -72,11 +72,11 @@ public class addtoteam extends javax.swing.JFrame {
             }
         });
 
-        jusername.setBackground(new java.awt.Color(249, 249, 249));
-        jusername.setFont(new java.awt.Font("Comfortaa", 0, 15)); // NOI18N
-        jusername.setForeground(new java.awt.Color(153, 153, 153));
-        jusername.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select user member" }));
-        jusername.setBorder(null);
+        jticket.setBackground(new java.awt.Color(249, 249, 249));
+        jticket.setFont(new java.awt.Font("Comfortaa", 0, 15)); // NOI18N
+        jticket.setForeground(new java.awt.Color(153, 153, 153));
+        jticket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select user member" }));
+        jticket.setBorder(null);
 
         jbackmenu.setFont(new java.awt.Font("Comfortaa", 0, 10)); // NOI18N
         jbackmenu.setForeground(new java.awt.Color(102, 102, 102));
@@ -87,15 +87,15 @@ public class addtoteam extends javax.swing.JFrame {
             }
         });
 
-        jteamname.setBackground(new java.awt.Color(249, 249, 249));
-        jteamname.setFont(new java.awt.Font("Comfortaa", 0, 15)); // NOI18N
-        jteamname.setForeground(new java.awt.Color(153, 153, 153));
-        jteamname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select team" }));
-        jteamname.setToolTipText("");
-        jteamname.setBorder(null);
-        jteamname.addItemListener(new java.awt.event.ItemListener() {
+        jmemberuser.setBackground(new java.awt.Color(249, 249, 249));
+        jmemberuser.setFont(new java.awt.Font("Comfortaa", 0, 15)); // NOI18N
+        jmemberuser.setForeground(new java.awt.Color(153, 153, 153));
+        jmemberuser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select ticket" }));
+        jmemberuser.setToolTipText("");
+        jmemberuser.setBorder(null);
+        jmemberuser.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jteamnameItemStateChanged(evt);
+                jmemberuserItemStateChanged(evt);
             }
         });
 
@@ -116,10 +116,10 @@ public class addtoteam extends javax.swing.JFrame {
                             .addComponent(jsubtitle))
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdivclassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jteamname, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jmemberuser, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jdivclassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btcreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jusername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jticket, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jdivclassLayout.setVerticalGroup(
@@ -130,9 +130,9 @@ public class addtoteam extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jsubtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jteamname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jmemberuser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jusername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jticket, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btcreate, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92)
@@ -192,87 +192,89 @@ public class addtoteam extends javax.swing.JFrame {
 
     private void btcreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcreateActionPerformed
         // TODO add your handling code here:
-        for(newusers u: masterclass.users){
-            if(u.getUser().equals(jusername.getSelectedItem().toString())){
-                u.setTeam(jteamname.getSelectedItem().toString());
+        for(newticket t: masterclass.ticket){
+            if(t.getTitle().equals(jticket.getSelectedItem().toString())){
+                t.setUserasigned(jmemberuser.getSelectedItem().toString());
+                t.setTeamasigned(menuusers.teamcookie);
+                t.setStatus("In process");
             break;
             }
         }
         //jusername.setSelectedIndex(0);
         filterUsers();
-        setdatable(usersTeamG);
+        setdatable(ticketsAsigneds);
     }//GEN-LAST:event_btcreateActionPerformed
 
     private void setComboTeam(){
-        jteamname.setModel(new DefaultComboBoxModel<>(new String[]{
-                "Select team",
+        jmemberuser.setModel(new DefaultComboBoxModel<>(new String[]{
+                "Select user member to asigned",
         }));
 
-        for (newteam t : masterclass.team) {
-            jteamname.addItem(t.getTeamname());
+        for (newusers u : masterclass.users) {
+            if(u.getRol().equals("Team member user")&&u.getTeam().equals(menuusers.teamcookie)){
+                jmemberuser.addItem(u.getName());
+            }
         }
     }
 
     private void jbackmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbackmenuMouseClicked
         // TODO add your handling code here:
-        menuadmin m = new menuadmin();
-        m.setVisible(true);
+        menuusers view = new menuusers(menuusers.user);
+        view.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbackmenuMouseClicked
 
-    private void jteamnameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jteamnameItemStateChanged
+    private void jmemberuserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jmemberuserItemStateChanged
         // TODO add your handling code here:
-
         filterUsers();
-        setdatable(usersTeamG);
+        setdatable(ticketsAsigneds);
 
-    }//GEN-LAST:event_jteamnameItemStateChanged
+    }//GEN-LAST:event_jmemberuserItemStateChanged
 
     private void filterUsers(){
-        String teamselected = jteamname.getSelectedItem().toString();
-        ArrayList<newusers> usersNoTeam = new ArrayList<>();
-        ArrayList<newusers> usersTeam = new ArrayList<>();
+        String teamselected = jmemberuser.getSelectedItem().toString();
+        ArrayList<newticket> ticketNotAsigned = new ArrayList<>();
+        ArrayList<newticket> ticketAsigned = new ArrayList<>();
 
-        for(newusers u : masterclass.users){
-            if(u.getTeam() == null){
-                usersNoTeam.add(u);
-            }else if(u.getTeam().isEmpty() || u.getTeam().isBlank()) {
-                usersNoTeam.add(u);
+        for(newticket u : masterclass.ticket){
+            if(u.getUserasigned()== null){
+                ticketNotAsigned.add(u);
+            }else if(u.getUserasigned().isEmpty() || u.getUserasigned().isBlank()) {
+                ticketNotAsigned.add(u);
             }else{
-                if(u.getTeam().equals(teamselected)){
-                    usersTeam.add(u);
+                if(u.getUserasigned().equals(teamselected)){
+                    ticketAsigned.add(u);
                 }
             }
         }
 
-        jusername.setModel(new DefaultComboBoxModel<>(new String[]{
-                "Select user member to add",
+        jticket.setModel(new DefaultComboBoxModel<>(new String[]{
+                "Select ticket",
         }));
 
-        for (newusers u : usersNoTeam) {
-            if(u.getRol().equals("Team member user")){
-                jusername.addItem(u.getUser());
-            }
+        for (newticket t : ticketNotAsigned) {
+            jticket.addItem(t.getTitle());
         }
-        usersTeamG = usersTeam;
+        ticketsAsigneds = ticketAsigned;
     }
 
-    private void setdatable(ArrayList<newusers> users){
-        DefaultTableModel dataM = new DefaultTableModel(new String[]{"Name", "Lastname", "Email", "User", "Rol", "Departament", "Team"}, users.size());
-        datateamusers.setModel(dataM);
+    private void setdatable(ArrayList<newticket> ticket){
+        DefaultTableModel dataM = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Team a", "Date f"}, ticket.size());
+            datateamusers.setModel(dataM);
 
-        TableModel modelM = datateamusers.getModel();
+            TableModel model = datateamusers.getModel();
 
-        for (int i = 0; i < users.size(); i++) {
-            newusers datau = users.get(i);
-            modelM.setValueAt(datau.getName(), i, 0);
-            modelM.setValueAt(datau.getLastname(), i, 1);
-            modelM.setValueAt(datau.getEmail(), i, 2);
-            modelM.setValueAt(datau.getUser(), i, 3);
-            modelM.setValueAt(datau.getRol(), i, 4);
-            modelM.setValueAt(datau.getDepartament(), i, 5);
-            modelM.setValueAt(datau.getTeam(), i, 6);
-        }
+            for (int i = 0; i < ticket.size(); i++) {
+                newticket datau = ticket.get(i);
+                model.setValueAt(datau.getId(), i, 0);
+                model.setValueAt(datau.getTitle(), i, 1);
+                model.setValueAt(datau.getDescrip(), i, 2);
+                model.setValueAt(datau.getStartdate(), i, 3);
+                model.setValueAt(datau.getUsercreated(), i, 4);
+                model.setValueAt(datau.getUserasigned(), i, 5);
+                model.setValueAt(datau.getTeamasigned(), i, 6);
+                model.setValueAt(datau.getFinishdate(), i, 7);
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -282,9 +284,9 @@ public class addtoteam extends javax.swing.JFrame {
     private javax.swing.JPanel jbackground;
     private javax.swing.JLabel jbackmenu;
     private javax.swing.JPanel jdivclass;
+    private javax.swing.JComboBox<String> jmemberuser;
     private javax.swing.JLabel jsubtitle;
-    private javax.swing.JComboBox<String> jteamname;
+    private javax.swing.JComboBox<String> jticket;
     private javax.swing.JLabel jtitle;
-    private javax.swing.JComboBox<String> jusername;
     // End of variables declaration//GEN-END:variables
 }

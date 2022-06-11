@@ -13,6 +13,7 @@ public class menuusers extends javax.swing.JFrame {
 public static newusers user;
 public static String usercoockie = "";
 public static String rolcoockie = "";
+public static String teamcookie= "";
 
     /**
      * Creates new form welcomepage
@@ -24,6 +25,7 @@ public static String rolcoockie = "";
         this.setLocationRelativeTo(null);
         getusercookie();
         getrolcookie();
+        System.out.println(rolcoockie);
     }
 
     /**
@@ -45,6 +47,7 @@ public static String rolcoockie = "";
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,6 +141,14 @@ public static String rolcoockie = "";
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setText("asigned ticket");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem3MousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("LogOut");
@@ -172,7 +183,7 @@ public static String rolcoockie = "";
         user = null;
         usercoockie = "";
         rolcoockie = "";
-        
+        teamcookie = "";
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -195,6 +206,13 @@ public static String rolcoockie = "";
         view.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2MousePressed
+
+    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
+        // TODO add your handling code here:
+        addtoticket view = new addtoticket();
+        view.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem3MousePressed
     
     public void getusercookie(){
         for(newusers u : masterclass.users){
@@ -208,6 +226,7 @@ public static String rolcoockie = "";
         for(newusers u : masterclass.users){
             if(menuusers.user.getRol().equals(u.getRol())){
                 rolcoockie = u.getRol();
+                teamcookie = u.getTeam();
             }
         }
     }
@@ -218,6 +237,7 @@ public static String rolcoockie = "";
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

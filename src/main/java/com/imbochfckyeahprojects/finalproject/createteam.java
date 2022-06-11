@@ -169,7 +169,7 @@ public class createteam extends javax.swing.JFrame {
         }));
 
         for (newusers u : masterclass.users) {
-            if (u.getRol().equals("Usuario lider de equipo")) {
+            if (u.getRol().equals("Team lead user")) {
                 jnewleader.addItem(u.getUser());
             }
         }
@@ -187,11 +187,11 @@ public class createteam extends javax.swing.JFrame {
             }
         }
         if(teamexist){
-            JOptionPane.showMessageDialog(this, "The email or user entered is already registered, please enter a new one.");
+            JOptionPane.showMessageDialog(this, "The name team entered is already registered, please enter a new one.");
         }else if(jnewTeam.getText().equals("Team Name") || jnewTeam.getText().isEmpty() || jnewTeam.getText().isBlank() ){
-            JOptionPane.showMessageDialog(this, "bla bla bla");
+            JOptionPane.showMessageDialog(this, "Please choose a lead user");
         }else if(jnewleader.getSelectedItem().toString().equals("Select leader")){
-            JOptionPane.showMessageDialog(this, "bla bla bla 2");
+            JOptionPane.showMessageDialog(this, "Please choose a lead user");
         }else{
             newteam nteam = new newteam();
             nteam.setTeamname(jnewTeam.getText());
@@ -206,13 +206,13 @@ public class createteam extends javax.swing.JFrame {
 
             jnewTeam.setText("Team Name");
 
-            JOptionPane.showMessageDialog(this, "New user created successfully");
+            JOptionPane.showMessageDialog(this, "New Team created successfully");
         }
 
-        for(newteam t: masterclass.team){
+        /*for(newteam t: masterclass.team){
             System.out.println(t.getTeamname());
             System.out.println(t.getLeaderofteam());
-        }
+        }*/
     }//GEN-LAST:event_btcreateActionPerformed
 
     private void jbackmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbackmenuMouseClicked
