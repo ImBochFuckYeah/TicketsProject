@@ -4,6 +4,7 @@
  */
 package com.imbochfckyeahprojects.finalproject;
 
+import static com.imbochfckyeahprojects.finalproject.menuusers.rolcoockie;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -24,7 +25,7 @@ public class addtoticket extends javax.swing.JFrame {
     public addtoticket() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setComboTeam();
+        validaterol();
     }
 
     /**
@@ -205,15 +206,37 @@ public class addtoticket extends javax.swing.JFrame {
         setdatable(ticketsAsigneds);
     }//GEN-LAST:event_btcreateActionPerformed
 
-    private void setComboTeam(){
+    private void setComboTeamLeader(){
         jmemberuser.setModel(new DefaultComboBoxModel<>(new String[]{
                 "Select user member to asigned",
         }));
 
         for (newusers u : masterclass.users) {
             if(u.getRol().equals("Team member user")&&u.getTeam().equals(menuusers.teamcookie)){
-                jmemberuser.addItem(u.getName());
+                jmemberuser.addItem(u.getUser());
             }
+        }
+    }
+    
+    private void setComboTeamMember(){
+        jmemberuser.setModel(new DefaultComboBoxModel<>(new String[]{
+                "Select user member to asigned",
+        }));
+
+        for (newusers u : masterclass.users) {
+            if(u.getUser().equals(menuusers.usercoockie)&&u.getTeam().equals(menuusers.teamcookie)){
+                jmemberuser.addItem(u.getUser());
+            }
+        }
+    }
+    
+    private void validaterol(){
+        if(rolcoockie.equals("Team lead user")){
+            setComboTeamLeader();
+        }else if(rolcoockie.equals("Team member user")){
+            setComboTeamMember();
+        }else{
+            JOptionPane.showMessageDialog(this, "Nonexistent role");
         }
     }
 

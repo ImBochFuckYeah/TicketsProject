@@ -4,6 +4,8 @@
  */
 package com.imbochfckyeahprojects.finalproject;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author imbochfuckyeah
@@ -25,7 +27,8 @@ public static String teamcookie= "";
         this.setLocationRelativeTo(null);
         getusercookie();
         getrolcookie();
-        System.out.println(rolcoockie);
+        validatepermissions();
+        //console_log();
     }
 
     /**
@@ -44,10 +47,11 @@ public static String teamcookie= "";
         jtitleuser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        vperfil = new javax.swing.JMenuItem();
+        cticket = new javax.swing.JMenuItem();
+        vtickets = new javax.swing.JMenuItem();
+        aticket = new javax.swing.JMenuItem();
+        mticket = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,37 +121,48 @@ public static String teamcookie= "";
 
         jMenu1.setText("Files");
 
-        jMenuItem7.setText("view perfil");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        vperfil.setText("view perfil");
+        vperfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                vperfilActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        jMenu1.add(vperfil);
 
-        jMenuItem1.setText("create ticket");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cticket.setText("create ticket");
+        cticket.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem1MousePressed(evt);
+                cticketMousePressed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(cticket);
 
-        jMenuItem2.setText("view tickets");
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+        vtickets.setText("view tickets");
+        vtickets.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem2MousePressed(evt);
+                vticketsMousePressed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(vtickets);
 
-        jMenuItem3.setText("asigned ticket");
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+        aticket.setText("asigned ticket");
+        aticket.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem3MousePressed(evt);
+                aticketMousePressed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(aticket);
+
+        mticket.setText("modify ticket");
+        mticket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mticketMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                mticketMouseReleased(evt);
+            }
+        });
+        jMenu1.add(mticket);
 
         jMenuBar1.add(jMenu1);
 
@@ -186,33 +201,44 @@ public static String teamcookie= "";
         teamcookie = "";
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void vperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vperfilActionPerformed
         // TODO add your handling code here:
         perfil view = new perfil();
         view.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_vperfilActionPerformed
 
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+    private void cticketMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cticketMousePressed
         // TODO add your handling code here:
         createticket view = new createticket();
         view.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem1MousePressed
+    }//GEN-LAST:event_cticketMousePressed
 
-    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+    private void vticketsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vticketsMousePressed
         // TODO add your handling code here:
         viewalltickets view = new viewalltickets();
         view.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2MousePressed
+    }//GEN-LAST:event_vticketsMousePressed
 
-    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
+    private void aticketMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aticketMousePressed
         // TODO add your handling code here:
-        addtoticket view = new addtoticket();
+            addtoticket view = new addtoticket();
+            view.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_aticketMousePressed
+
+    private void mticketMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mticketMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mticketMouseReleased
+
+    private void mticketMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mticketMousePressed
+        // TODO add your handling code here:
+        editticket view = new editticket();
         view.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem3MousePressed
+    }//GEN-LAST:event_mticketMousePressed
     
     public void getusercookie(){
         for(newusers u : masterclass.users){
@@ -231,18 +257,52 @@ public static String teamcookie= "";
         }
     }
     
+    public void validatepermissions(){
+        if(rolcoockie.equals("Normal user")){
+            vperfil.setVisible(true);
+            cticket.setVisible(true);
+            vtickets.setVisible(true);
+            aticket.setVisible(false);
+            mticket.setVisible(false);
+        }else if(rolcoockie.equals("Team lead user")){
+            vperfil.setVisible(true);
+            cticket.setVisible(false);
+            vtickets.setVisible(true);
+            aticket.setVisible(true);
+            mticket.setVisible(false);
+        }else if(rolcoockie.equals("Team member user")){
+            vperfil.setVisible(true);
+            cticket.setVisible(false);
+            vtickets.setVisible(true);
+            aticket.setVisible(true);
+            mticket.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Nonexistent role");
+        }
+    }
+    
+    private void console_log(){
+        System.out.println("------------");
+        System.out.println(user);
+        System.out.println(usercoockie);
+        System.out.println(rolcoockie);
+        System.out.println(teamcookie);
+        System.out.println("------------");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aticket;
+    private javax.swing.JMenuItem cticket;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jsubtitle;
     private javax.swing.JLabel jtitle;
     private javax.swing.JLabel jtitleuser;
+    private javax.swing.JMenuItem mticket;
+    private javax.swing.JMenuItem vperfil;
+    private javax.swing.JMenuItem vtickets;
     // End of variables declaration//GEN-END:variables
 }

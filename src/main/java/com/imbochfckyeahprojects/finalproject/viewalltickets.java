@@ -341,6 +341,21 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
             }
             
         }else if(filterRol.equals("Team member user")){ //Si es usuario miembro
+            System.out.println("estoy aqui");
+            if(filter.equals("all")){
+                for (newticket u: masterclass.ticket) {
+                    if (filterUser.equals(u.getUserasigned())){
+                        ticketu.add(u);
+                    }
+                }
+            }else{
+                for (newticket u: masterclass.ticket) {
+                    if (filter.equals(u.getStatus())&&filterUser.equals(u.getUserasigned())){
+                        ticketu.add(u);
+                    }
+                }
+            }
+            
         }else{ //Si no encuentra el rol
             JOptionPane.showMessageDialog(this, "Nonexistent role");
         }
@@ -381,6 +396,10 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
             case "Team lead user":
                 setcombo();
                 break;
+                
+            case "Team member user":
+                setcombo();
+                break;    
         }
     }
     

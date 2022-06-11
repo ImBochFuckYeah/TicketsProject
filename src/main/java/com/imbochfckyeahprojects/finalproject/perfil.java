@@ -262,14 +262,7 @@ public class perfil extends javax.swing.JFrame {
     public void updatedata(){
         for(newusers userdata : masterclass.users){
             if(userdata.getUser().equals(menuusers.user.getUser())){
-                    //Password validation
-                String PATTERN = "^(?=.*[AZ])(?=.*[az])(?=.*[0-9]).{8,20}$";
-                Pattern patt = Pattern.compile(PATTERN);
-                Matcher match = patt.matcher(jeditPassword.getText());
-                /////////////////////
-                if(!match.matches()){
-                    JOptionPane.showMessageDialog(this, "Password format incorrect, try again.");
-                }else{
+                updateDataTicket();
                 userdata.setName(jeditName.getText());
                 userdata.setLastname(jeditLastname.getText());
                 userdata.setUser(jeditUser.getText());
@@ -281,9 +274,6 @@ public class perfil extends javax.swing.JFrame {
                 menuusers.user.setEmail(jeditEmail.getText());
                 menuusers.user.setPassword(jeditPassword.getText());
                 JOptionPane.showMessageDialog(this, "User data updated successfully.");
-                }
-            }else{
-                JOptionPane.showMessageDialog(this, "An error has occurred, plase try again.");
             }
         }
     }
@@ -294,6 +284,16 @@ public class perfil extends javax.swing.JFrame {
         }else{
             getdata();
 
+        }
+    }
+    
+    public void updateDataTicket(){
+        for(newticket updatedata : masterclass.ticket){
+            if(updatedata.getUserasigned().equals(menuusers.usercoockie)){
+               updatedata.setUserasigned(jeditUser.getText());
+            }if(updatedata.getUsercreated().equals(menuusers.usercoockie)){
+               updatedata.setUsercreated(jeditUser.getText());
+            }
         }
     }
     
