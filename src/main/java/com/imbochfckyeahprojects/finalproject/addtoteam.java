@@ -236,7 +236,7 @@ public class addtoteam extends javax.swing.JFrame {
         for(newusers u : masterclass.users){
             if(u.getTeam() == null){
                 usersNoTeam.add(u);
-            }else if(u.getTeam().isEmpty() || u.getTeam().isBlank()) {
+            }else if(u.getTeam().isEmpty()) {
                 usersNoTeam.add(u);
             }else{
                 if(u.getTeam().equals(teamselected)){

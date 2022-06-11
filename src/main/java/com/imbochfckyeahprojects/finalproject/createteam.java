@@ -188,7 +188,7 @@ public class createteam extends javax.swing.JFrame {
         }
         if(teamexist){
             JOptionPane.showMessageDialog(this, "The name team entered is already registered, please enter a new one.");
-        }else if(jnewTeam.getText().equals("Team Name") || jnewTeam.getText().isEmpty() || jnewTeam.getText().isBlank() ){
+        }else if(jnewTeam.getText().equals("Team Name") || jnewTeam.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Please choose a lead user");
         }else if(jnewleader.getSelectedItem().toString().equals("Select leader")){
             JOptionPane.showMessageDialog(this, "Please choose a lead user");

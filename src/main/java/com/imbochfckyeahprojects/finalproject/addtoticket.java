@@ -201,7 +201,6 @@ public class addtoticket extends javax.swing.JFrame {
             break;
             }
         }
-        //jusername.setSelectedIndex(0);
         filterUsers();
         setdatable(ticketsAsigneds);
     }//GEN-LAST:event_btcreateActionPerformed
@@ -216,6 +215,7 @@ public class addtoticket extends javax.swing.JFrame {
                 jmemberuser.addItem(u.getUser());
             }
         }
+        filterUsers();
     }
     
     private void setComboTeamMember(){
@@ -228,13 +228,16 @@ public class addtoticket extends javax.swing.JFrame {
                 jmemberuser.addItem(u.getUser());
             }
         }
+        filterUsers();
     }
     
     private void validaterol(){
         if(rolcoockie.equals("Team lead user")){
             setComboTeamLeader();
+            filterUsers();
         }else if(rolcoockie.equals("Team member user")){
             setComboTeamMember();
+            filterUsers();
         }else{
             JOptionPane.showMessageDialog(this, "Nonexistent role");
         }
@@ -260,9 +263,7 @@ public class addtoticket extends javax.swing.JFrame {
         ArrayList<newticket> ticketAsigned = new ArrayList<>();
 
         for(newticket u : masterclass.ticket){
-            if(u.getUserasigned()== null){
-                ticketNotAsigned.add(u);
-            }else if(u.getUserasigned().isEmpty() || u.getUserasigned().isBlank()) {
+            if(u.getUserasigned()==""){
                 ticketNotAsigned.add(u);
             }else{
                 if(u.getUserasigned().equals(teamselected)){
