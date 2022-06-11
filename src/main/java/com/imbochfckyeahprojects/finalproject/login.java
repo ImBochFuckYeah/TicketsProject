@@ -185,6 +185,8 @@ public class login extends javax.swing.JFrame {
         String password = jpassword.getText();
 
         if("admin".equals(user)&&"admin".equals(password)){
+            menuusers.usercoockie = "admin";
+            menuusers.rolcoockie = "admin";
             menuadmin m = new menuadmin();
             m.setVisible(true);
             this.dispose();

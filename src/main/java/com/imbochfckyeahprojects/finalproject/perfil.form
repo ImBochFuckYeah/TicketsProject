@@ -261,6 +261,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbackmenuMouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbackmenuMousePressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jeditUser">

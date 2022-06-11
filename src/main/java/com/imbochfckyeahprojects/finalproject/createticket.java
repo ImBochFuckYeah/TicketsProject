@@ -205,7 +205,7 @@ public class createticket extends javax.swing.JFrame {
         ticket.setTitle(jnewTitle.getText());
         ticket.setDescrip(jnewDescript.getText());
         ticket.setStartdate(formatter.format(date));
-        ticket.setUsercreated(menuusers.usercockie);
+        ticket.setUsercreated(menuusers.usercoockie);
         ticket.setUserasigned("");
         ticket.setStatus("Not assigned");
         ticket.setFinishdate("");

@@ -21,8 +21,7 @@ public class viewalltickets extends javax.swing.JFrame {
     public viewalltickets() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setdatatable(masterclass.ticket, "all");
-        setcombo();
+        validaterol();
     }
 
 private void setdatatable(ArrayList<newticket> ticket, String filter){
@@ -47,7 +46,7 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
         }
 
          else if(filter.equals("Not assigned")) {
-            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Name", "Lastname", "Email", "User", "Rol", "Departament"}, ticket.size());
+            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Status", "Date f"}, ticket.size());
             datausers.setModel(dataM);
 
             TableModel model = datausers.getModel();
@@ -66,7 +65,45 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
         }
         
         else if(filter.equals("In process")) {
-            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Name", "Lastname", "Email", "User", "Rol", "Departament"}, ticket.size());
+            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Status", "Date f"}, ticket.size());
+            datausers.setModel(dataM);
+
+            TableModel model = datausers.getModel();
+
+            for (int i = 0; i < ticket.size(); i++) {
+                newticket datau = ticket.get(i);
+                model.setValueAt(datau.getId(), i, 0);
+                model.setValueAt(datau.getTitle(), i, 1);
+                model.setValueAt(datau.getDescrip(), i, 2);
+                model.setValueAt(datau.getStartdate(), i, 3);
+                model.setValueAt(datau.getUsercreated(), i, 4);
+                model.setValueAt(datau.getUserasigned(), i, 5);
+                model.setValueAt(datau.getStatus(), i, 6);
+                model.setValueAt(datau.getFinishdate(), i, 7);
+            }
+        }
+        
+        else if(filter.equals("Refused")) {
+            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Status", "Date f"}, ticket.size());
+            datausers.setModel(dataM);
+
+            TableModel model = datausers.getModel();
+
+            for (int i = 0; i < ticket.size(); i++) {
+                newticket datau = ticket.get(i);
+                model.setValueAt(datau.getId(), i, 0);
+                model.setValueAt(datau.getTitle(), i, 1);
+                model.setValueAt(datau.getDescrip(), i, 2);
+                model.setValueAt(datau.getStartdate(), i, 3);
+                model.setValueAt(datau.getUsercreated(), i, 4);
+                model.setValueAt(datau.getUserasigned(), i, 5);
+                model.setValueAt(datau.getStatus(), i, 6);
+                model.setValueAt(datau.getFinishdate(), i, 7);
+            }
+        }
+        
+        else if(filter.equals("Resolved")) {
+            DefaultTableModel dataM = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Status", "Date f"}, ticket.size());
             datausers.setModel(dataM);
 
             TableModel model = datausers.getModel();
@@ -248,44 +285,56 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
     private void jstatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jstatusItemStateChanged
         // TODO add your handling code here:
         String filter = "";
+        String filterUser = menuusers.usercoockie;
         ArrayList<newticket> ticketu = new ArrayList<>();
 
         switch (jstatus.getSelectedIndex()){
-            case 1:
+            case 0:
                 filter = "all";
             break;
-            case 2:
+            case 1:
                 filter = "Not assigned";
             break;
-            case 3:
+            case 2:
                 filter = "In process";
             break;
-            case 4:
+            case 3:
                 filter = "Refused";
             break;
-            case 5:
+            case 4:
                 filter = "Resolved";
             break;
         }
 
         if(filter.equals("all")){
-            ticketu = masterclass.ticket;
+            for (newticket u: masterclass.ticket) {
+                if (filterUser.equals(u.getUsercreated())){
+                    ticketu.add(u);
+                }
+            }
+            //ticketu = masterclass.ticket;
         }else{
             for (newticket u: masterclass.ticket) {
-                if (filter.equals(u.getStatus())){
+                if (filter.equals(u.getStatus())&&filterUser.equals(u.getUsercreated())){
                     ticketu.add(u);
                 }
             }
         }
-
         setdatatable(ticketu, filter);
     }//GEN-LAST:event_jstatusItemStateChanged
 
     private void jbackmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbackmenuMousePressed
         // TODO add your handling code here:
-        menuusers view = new menuusers(menuusers.user);
-        view.setVisible(true);
-        this.dispose();
+        if(menuusers.rolcoockie.equals("admin")){
+            menuadmin view = new menuadmin();
+            view.setVisible(true);
+            this.dispose();
+        
+        }else{
+            menuusers view = new menuusers(menuusers.user);
+            view.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jbackmenuMousePressed
 
     public void setcombo() {
@@ -294,6 +343,40 @@ private void setdatatable(ArrayList<newticket> ticket, String filter){
         jstatus.addItem("In process");
         jstatus.addItem("Refused");
         jstatus.addItem("Resolved");
+    }
+    
+    public void validaterol(){
+        switch(menuusers.rolcoockie){
+            case "admin":
+                setdatatableadmin();
+                break;
+            case "Normal user":
+                setcombo();
+                setdatatable(masterclass.ticket, "all");
+                break;
+        }
+    }
+    
+    public void setdatatableadmin(){
+        
+            jsubtitle2.setVisible(false);
+            jstatus.setVisible(false);
+        
+            DefaultTableModel data = new DefaultTableModel(new String[]{"Id", "Title", "Descrip", "Date i", "User c", "User a", "Status", "Date f"}, masterclass.ticket.size());
+            datausers.setModel(data);
+            TableModel model = datausers.getModel();
+
+            for (int i = 0; i < masterclass.ticket.size(); i++) {
+                newticket datau = masterclass.ticket.get(i);
+                model.setValueAt(datau.getId(), i, 0);
+                model.setValueAt(datau.getTitle(), i, 1);
+                model.setValueAt(datau.getDescrip(), i, 2);
+                model.setValueAt(datau.getStartdate(), i, 3);
+                model.setValueAt(datau.getUsercreated(), i, 4);
+                model.setValueAt(datau.getUserasigned(), i, 5);
+                model.setValueAt(datau.getStatus(), i, 6);
+                model.setValueAt(datau.getFinishdate(), i, 7);
+            }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

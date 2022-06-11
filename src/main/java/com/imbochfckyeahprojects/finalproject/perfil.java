@@ -19,7 +19,7 @@ public class perfil extends javax.swing.JFrame {
     public perfil() {
         initComponents();
         this.setLocationRelativeTo(null);
-        getdata();
+        validaterol();
     }
 
     /**
@@ -110,6 +110,9 @@ public class perfil extends javax.swing.JFrame {
         jbackmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbackmenuMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbackmenuMousePressed(evt);
             }
         });
 
@@ -208,15 +211,26 @@ public class perfil extends javax.swing.JFrame {
 
     private void jbackmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbackmenuMouseClicked
         // TODO add your handling code here:
-        menuusers view = new menuusers(menuusers.user);
-        view.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jbackmenuMouseClicked
 
     private void btupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btupdateActionPerformed
         // TODO add your handling code here:
         updatedata();
     }//GEN-LAST:event_btupdateActionPerformed
+
+    private void jbackmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbackmenuMousePressed
+        // TODO add your handling code here:
+        if(menuusers.rolcoockie.equals("admin")){
+            menuadmin view = new menuadmin();
+            view.setVisible(true);
+            this.dispose();
+        
+        }else{
+            menuusers view = new menuusers(menuusers.user);
+            view.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jbackmenuMousePressed
 
     public void getdata(){
         for(newusers u : masterclass.users){
@@ -228,6 +242,21 @@ public class perfil extends javax.swing.JFrame {
                 jeditPassword.setText(u.getPassword());
             }
         }
+    }
+    
+    public void setdataadmin(){
+        btupdate.setVisible(false);
+        jeditPassword.setVisible(false);
+        
+            jeditName.setText("Josué Emanuel Ixchop Boch");
+            jeditName.setEditable(false);
+            jeditLastname.setText("3190-21-12461");
+            jeditLastname.setEditable(false);
+            jeditUser.setText("Programación I");
+            jeditUser.setEditable(false);
+            jeditEmail.setText("Sección A");
+            jeditEmail.setEditable(false);
+            
     }
     
     public void updatedata(){
@@ -256,6 +285,15 @@ public class perfil extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "An error has occurred, plase try again.");
             }
+        }
+    }
+    
+    public void validaterol(){
+        if(menuusers.usercoockie.equals("admin")){
+            setdataadmin();
+        }else{
+            getdata();
+
         }
     }
     

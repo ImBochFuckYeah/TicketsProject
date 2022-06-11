@@ -11,7 +11,9 @@ package com.imbochfckyeahprojects.finalproject;
 public class menuusers extends javax.swing.JFrame {
 
 public static newusers user;
-public static String usercockie = "";
+public static String usercoockie = "";
+public static String rolcoockie = "";
+
     /**
      * Creates new form welcomepage
      */
@@ -20,7 +22,8 @@ public static String usercockie = "";
         initComponents();
         jtitleuser.setText(this.user.getUser());
         this.setLocationRelativeTo(null);
-        getusercokie();
+        getusercookie();
+        getrolcookie();
     }
 
     /**
@@ -167,7 +170,9 @@ public static String usercockie = "";
         log.setVisible(true);
         this.dispose();
         user = null;
-        usercockie = "";
+        usercoockie = "";
+        rolcoockie = "";
+        
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -191,10 +196,18 @@ public static String usercockie = "";
         this.dispose();
     }//GEN-LAST:event_jMenuItem2MousePressed
     
-    public void getusercokie(){
+    public void getusercookie(){
         for(newusers u : masterclass.users){
             if(menuusers.user.getUser().equals(u.getUser())){
-                usercockie = u.getUser();
+                usercoockie = u.getUser();
+            }
+        }
+    }
+    
+    public void getrolcookie(){
+        for(newusers u : masterclass.users){
+            if(menuusers.user.getRol().equals(u.getRol())){
+                rolcoockie = u.getRol();
             }
         }
     }

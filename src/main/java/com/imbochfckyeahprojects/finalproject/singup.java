@@ -105,7 +105,7 @@ public class singup extends javax.swing.JFrame {
         jnewName.setFont(new java.awt.Font("Comfortaa", 0, 15)); // NOI18N
         jnewName.setForeground(new java.awt.Color(153, 153, 153));
         jnewName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jnewName.setText(" Name");
+        jnewName.setText("Name");
         jnewName.setToolTipText("");
         jnewName.setBorder(null);
 
@@ -238,7 +238,7 @@ public class singup extends javax.swing.JFrame {
             user.setEmail(jnewEmail.getText());
             user.setUser(jnewUser.getText());
             user.setPassword(jnewPassword.getText());
-            user.setRol("Usuario normal");
+            user.setRol("Normal user");
             masterclass.users.add(user);
 
             jnewName.setText("Name");
